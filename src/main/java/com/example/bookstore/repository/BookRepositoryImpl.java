@@ -16,7 +16,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     public List<Book> findAll() {
 //        return books; // TODO uncomment BookRepositoryImplTest to check out why it's bad
-        return Collections.unmodifiableList(books);
+        return Collections.unmodifiableList(books); // zwracamy kopię kolekcji (tylko do odczytu)
     }
 
     @Override
