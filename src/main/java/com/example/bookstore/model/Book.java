@@ -1,11 +1,25 @@
 package com.example.bookstore.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Objects;
 
+@Document(collection = "book")
 public class Book {
-    private final String id;
-    private final String title;
-    private final String author;
+//    private final String id;
+//    private final String title;
+//    private final String author;
+
+    @Id
+    private  String id; // mongo
+    @Indexed(name="title_idx",unique = true)
+    private  String title;
+    private  String author;
+
+    public Book(){  //mongo
+    }
 
     public Book(String id, String title, String author) {
         this.id = id;
@@ -27,6 +41,18 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+
+    public void setId(String id) {  //mongo
+        this.id = id;
+    }
+
+    public void setTitle(String title) {    //mongo
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {  //mongo
+        this.author = author;
     }
 
     @Override

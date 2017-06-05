@@ -36,6 +36,7 @@ public class BookController {
         return "book-listing";
     }
 
+
     @PostMapping()
     public String addBook(@ModelAttribute BookDto bookDto,
                           RedirectAttributes redirectAttributes) {
@@ -50,5 +51,9 @@ public class BookController {
         bookService.deleteBookById(id);
         redirectAttributes.addFlashAttribute("result", "Książka o id " + id + " została usunięta.");
         return "redirect:/books";
+    }
+    @GetMapping("/ajax")
+    public String ajaxListing() {
+        return "ajax-listing";
     }
 }
